@@ -4,6 +4,8 @@ from bs4 import BeautifulSoup
 import re
 from selenium import webdriver
 import google.generativeai as genai
+from selenium.webdriver.chrome.options import Options
+
 
 
 app = Flask(__name__)
@@ -69,9 +71,14 @@ def scrape_website_data(username):
     res['H'] = int(d[4])
     profilename = soup_main.find('div', class_='profilePicSection_head_userHandle__oOfFy').get_text(strip=True)
     #cont
-    driver = webdriver.Chrome()
+
+    chrome_options = Options()
+    chrome_options.add_argument("--headless")  # Run in headless mode
+    chrome_options.add_argument("--disable-gpu")  # Disable GPU acceleration
+    chrome_options.add_argument("--no-sandbox")  # Required for some environments
+    chrome_options.add_argument("--disable-dev-shm-usage") 
+    driver = webdriver.Chrome(options=chrome_options)
     driver.get("https://www.geeksforgeeks.org/events?itm_source=geeksforgeeks&itm_medium=main_header&itm_campaign=contests")
-    driver.implicitly_wait(10)
     html = driver.page_source
     soup_cont = BeautifulSoup(html, 'html.parser')
     main_div = soup_cont.find('div', class_='ui stackable three column grid')
@@ -140,3 +147,5 @@ def get_suggestions():
     return jsonify({"suggestions": suggestions})
 
 
+if __name__ == "__main__":
+    app.run()
