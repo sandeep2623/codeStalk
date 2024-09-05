@@ -1,0 +1,240 @@
+<!--main sec start-->
+<main>
+    <div class="main-top">
+        <div class="top-left">
+            <h1>Geeksforgeeks</h1>
+            <div class="date">
+                <input type="date" id="date-input">
+            </div>
+        </div>
+
+        <!--total solved section start-->
+        <div class="top-right">
+            <div class="left">
+                <h4>Total Solved Problems</h4>
+                <div class="number">
+                    <h2>{{scraped_data.val.total}}</h2>
+                </div>
+            </div>
+
+            <div class="right">
+                </span><img alt="icon"
+                    src="https://media.geeksforgeeks.org/auth-dashboard-uploads/Group-12723.svg"></span>
+            </div>
+        </div>
+    </div>
+
+    <!--total solved section end-->
+    <!--start insights-->
+    <div class="insights">
+        <!--start S-->
+        <div class="item" id="S">
+
+            <span class="material-symbols-outlined">School</span>
+            <div class="middle">
+                <div class="left">
+                    <h4>S level</h4>
+                    <h3>Solved</h3>
+                </div>
+                <div class="progress">
+                    <svg>
+                        <circle r="30" cy="40" cx="40"></circle>
+                    </svg>
+                    <div class="number">
+                        {{scraped_data.val.S}}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--end S-->
+        <!--start B-->
+        <div class="item" id="B">
+
+            <span class="material-symbols-outlined">Build</span>
+            <div class="middle">
+                <div class="left">
+                    <h4>B level</h4>
+                    <h3>Solved</h3>
+                </div>
+                <div class="progress">
+                    <svg>
+                        <circle r="30" cy="40" cx="40"></circle>
+                    </svg>
+                    <div class="number">
+                        {{scraped_data.val.B}}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--end B-->
+        <!--start E-->
+        <div class="item" id="E">
+
+            <span class="material-symbols-outlined">tips_and_updates</span>
+            <div class="middle">
+                <div class="left">
+                    <h4>E level</h4>
+                    <h3>Solved</h3>
+                </div>
+                <div class="progress">
+                    <svg>
+                        <circle r="30" cy="40" cx="40"></circle>
+                    </svg>
+                    <div class="number">
+                        {{scraped_data.val.E}}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--end E-->
+        <!--start M-->
+        <div class="item" id="M">
+
+            <span class="material-symbols-outlined">rocket_launch</span>
+            <div class="middle">
+                <div class="left">
+                    <h4>M level</h4>
+                    <h3>Solved</h3>
+                </div>
+                <div class="progress">
+                    <svg>
+                        <circle r="30" cy="40" cx="40"></circle>
+                    </svg>
+                    <div class="number">
+                        {{scraped_data.val.M}}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!--end M-->
+        <!--start H-->
+        <div class="item" id="H">
+
+            <span class="material-symbols-outlined">Psychology</span>
+            <div class="middle">
+                <div class="left">
+                    <h4>H level</h4>
+                    <h3>Solved</h3>
+                </div>
+                <div class="progress">
+                    <svg>
+                        <circle r="30" cy="40" cx="40"></circle>
+                    </svg>
+                    <div class="number">
+                        {{scraped_data.val.H}}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--end H-->
+
+    </div>
+    <!--end insights-->
+    <!--start recent q-->
+    <div class="recentquest">
+        <h1> Recent Solved Questions</h1>
+        <div class="scroll-box">
+            <ul>
+                {% for key, value in scraped_data.recentques.items() %}
+                <li><a href="{{ value }}" target="_blank">{{ key }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <!--end recent q-->
+    <!--analyse sec start-->
+    <div class="show-scroll-box">
+        <button id="show-box-btn">Analyse</button>
+        <ul>
+            <div id="scroll-box" class="scroll-box" style="display: none;"></div>
+        </ul>
+
+
+    </div>
+    </div>
+    <!--analyse sec end-->
+
+</main>
+<!--main sec end-->
+<!--right sec start-->
+<div class="right">
+    <!-- start top sec-->
+    <div class="top">
+        <button id="menu_bar">
+            <span class="material-symbols-outlined">menu</span>
+        </button>
+        <div class="theme-toggler">
+            <span class="material-symbols-outlined active">light_mode</span>
+            <span class="material-symbols-outlined">dark_mode</span>
+        </div>
+        <div class="profile">
+            <div class="info">
+                <a href="https://www.geeksforgeeks.org/user/{{scraped_data.username}}/" target="_blank">
+                    <p><b>{{scraped_data.profilename[:8]}}</b></p>
+                    <p>User</p>
+                </a>
+
+            </div>
+            <div class="profile-photo">
+                <img src="" alt="wait">
+            </div>
+        </div>
+    </div>
+    <!-- end top sec-->
+    <!-- start POD sec-->
+    <div class="pod">
+        <a href="{{scraped_data.pod}}" target="_blank"><button class="pod-button">POD</button></a>
+    </div>
+    <!-- end POD sec-->
+    <!-- start new contests sec-->
+    <div class="new-contests">
+        <h2> Contests</h2>
+        <div class="all-messages">
+            {% for outer_key, inner_dict in scraped_data.cont.items() %}
+            <div>
+                {% for key, value in inner_dict.items() %}
+                <div class="messages">
+                    <a href="{{outer_key}}" target="_blank">
+                        <p><b>{{key}}</b> {{value}}</p>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+    <div class="add-friends-section">
+        <button id="add-friend-btn">Add Friend</button>
+        <div id="friend-input-container" style="display: none;">
+            <input type="text" id="friend-username" placeholder="Enter friend's username">
+            <button id="submit-friend-btn">Add</button>
+        </div>
+        <div class="table-wrapper">
+            <table id="friends-table" style="display: none;">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Username</th>
+                        <th>Problems Solved</th>
+                    </tr>
+                </thead>
+                <tbody id="friends-list-container">
+                    <!-- Friends list will be appended here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<!-- end new contests sec-->
+
+
+
+<!--right sec end-->

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeStalk</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/stylemid.css')}}">
+
+</head>
+
+<body>
+    <div class="container">
+        <!-- aside sec start-->
+        <aside>
+            <div class="top">
+                <div class="logo" onclick="showSection()">
+                    <h2 class="logo-text">C<span class="danger">S</span></h2>
+                </div>
+                <div class="close" id="close_btn">
+                    <span class="material-symbols-outlined">close</span>
+                </div>
+            </div>
+            <!--end top-->
+            <div class="sidebar">
+                <a class="nav-link" id="LeetCode" onclick="selectSection('LeetCode')">
+                    <span><img
+                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAACkUlEQVR4nK2VzU8TQRTA1wC7207bXUA0Rjujgpe2saTcoJ8RFYNH0aAmICqejCcvalL8OGDUA+EifgTtDsH04G6LHjz5F3DQKEGMHgydpcagaEiM2o7ZJku3rWm3ti95p3nz+72Z2ZllmCpjwMWwvT7722YHlz0edjyudn5FuN8DPnIcS7X07QFf6wbv6mKa/G7wQYcDC0tPhMXLdYGHQkxjwAPe6XCrhaUDAced+nXuAe91uIVn6dA+YbJunfd4wJIO53mW3j6zmRIM11QJXacvmcaa4AEPWDTCx0faqIpRPiX4fGmig/u/zt15uIVn6cWBllcEw6gqIUwk9EeXEAnNvYm72Gr4DX4PWDAe6PAB8YGxYCXm3K9itJ5fDZRpnGkwBe9xFcJP94nT/yokMztDREI/DNvVX5Ee9trmjfDRQ0KsXH06BrtVjL4QDNPLs+3OsvDBkH3MCD/X3zxTsSOGYbRDplNdTRULvbutq7pgqFd8wdQ5mrSuNbhzC5+JR5mCr+KZokSSCeXbXEKhJjKTTMgPiwWi3r23A6wXDyYVZdwkPJdJRV4rZmxqFfiMJhDsHL1yss1rHJRl2ZlU5EfJhBw3k4nE08GSPQrutW1crG43WJ2+IIi17HlJDB8UA6KDy+qSiBd8nhptFirNUzE8TGKoz5TkWFC8BKxcTqBluNOWnjjf4igDv6FfNO1OmJIc9TuiBRKvbeXmSKu9BC6hWxvvEUaZZYw6TQlykpD9arHk9f1dW7Wx1NQ2q4rhXSNcjaFTpuEbkqBwzSiZn9zxU8VwgWD43fCSZlMYnq0arsdgRBjb3sZnjwQEDVbwLyAY/qoJrkd61tmuSuieKsFPREK/CYYqkeCTlAR9ZgB/Ac7jlcKnc3teAAAAAElFTkSuQmCC"
+                            width="25" height="25"></span>
+                    <h3>LeetCode</h3>
+                </a>
+                <a class="nav-link" id="Geeksforgeeks" onclick="selectSection('Geeksforgeeks')">
+                    <span><img class="gfgLogoImg normal" src="https://media.geeksforgeeks.org/gfg-gg-logo.svg"
+                            alt="geeksforgeeks" width="25" height="20"></span>
+                    <h3>Geeksforgeeks</h3>
+                </a>
+                <a class="nav-link" id="HackerRank" onclick="selectSection('HackerRank')">
+                    <span><img
+                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAABtUlEQVR4nO2WWytEURTHf5M8aSgZD0g0jMs7PoDLB5BxefHoc8wHENKkhMgL8UySUC7fQfOG5oFCLpMZRLvWqd1p5px9zhym0fxrP63L/u+1/3vtBRWUKbqAReBG1gLQ+RcbtwLLwAfwbVtfwA4Q/Y2NG4ElICubvQErQB/QD6wBGbEpnyQQCWLjEDAN3Gun3ASa8vg226rzAMxIDl+IAadaiffk7t3QAxxoccd+9DEFvEoCJbJRHweIA7eS4wUYNw0ckVKrwC0gbLMnZJmgVoRpXd+QSdCGBMzmsSW00pqSUJiTGCVWV1yK82ABu0XAC4Yl5tzEOSXO7R4JOBGLiu3KhEBanOsDJBARmxKlK57EuSZAAmGxPZoQyIlzlQuBQisfqsWWKzWBbFlcQbrUIkyV+hle+GxETgSsRnRmQmDdoRUXglOLDmmteNXrZ7QtH4opCfvmdcCu5Po0/YwUJuQLtYQzhndMaoJ+9pMjBpxopd0Hug3ieoFDLe4I6KAIxIE72+DZlsevJeiRzP6Ok9pQmhFBqYF0QIT7rnU7NbI38J/GcjvUkDkv8+K1PLOi7rkCSoUfmwjGLLMTVeUAAAAASUVORK5CYII="
+                            width="30" height="25"></span>
+                    <h3>HackerRank</h3>
+                </a>
+                <a class="nav-link" id="CodeForces" onclick="selectSection('CodeForces')">
+                    <span><img
+                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAxklEQVR4nO2VQQqDMBBFXZlrKHgFh+6KyZWEXqDpDcx11GuIhyhOFrqaEkttY7NpmYWLfHgwhGEehCFJkhiOZAZvWTMtuUFyuDprUPMJmvfwTWKmmU2Q74a/OIaAWlFQn9bUpZcVV7ei4BP06Ui9oB0Do0BQiMMJ7udTYSuorSwvKxXU7oxNYBWMVgF5yHLgFFCIKNgSr4j+36JOLIE1nX99rlHCsh+OEma3ptqTPOurL0D99eEY9HpQlfpT4mpU4PXEJKE8ANaBm3KEvYSKAAAAAElFTkSuQmCC"
+                            width="25" height="25"></span>
+                    <h3>CodeForces</h3>
+                </a>
+                <a class="nav-item" onclick="showSection()">
+                    <span class="material-symbols-outlined">Logout</span>
+                    <h3>Logout</h3>
+                </a>
+            </div>
+        </aside>
+        <!-- aside sec end-->
+        <!--main sec start-->
+
+        <div class="content" id="content-area">
+            <div class="welcome-container">
+                <h2> Welcome to Your</h2>
+                <h1> Coding Journey!</h1>
+                <p>Are you ready to conquer the coding world? 🚀</p>
+                <p>Choose your preferred platform from the sections on the left and let the challenge begin!</p>
+                <p>Your progress is just a click away. 💻</p>
+            </div>
+        </div>
+        <!--main sec end-->
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static',filename='js/script.js')}}"></script>
+</body>
+
+</html>
