@@ -2,6 +2,5 @@ Flask
 Gunicorn
 requests
 bs4
-re
 selenium
 google-generativeai
