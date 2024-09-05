@@ -560,7 +560,24 @@ right sec styling
     transition: background-color 0.3s ease;
 }
 
+.right .pod-cont {
+    margin-top: 1rem;
+    padding: 10px 60px;
+    font-size: 14px;
+    background-color: var(--clr-white);
+    color: var(--clr-dark);
+    border: var(--clr-dark);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
 .right .pod-button:hover {
+    background-color: #0056b3;
+}
+
+.right .pod-cont:hover {
     background-color: #0056b3;
 }
 
@@ -626,17 +643,14 @@ right sec styling
  
 .right .new-contests{
     margin-top: 1rem;
-    margin-left: -20px;
-}
-
-.right .new-contests h2{
-    margin-bottom: 10px;
-    text-align: center; /* Center the text horizontally */
+    margin-left: -10px;
 }
 
 .right .new-contests .all-messages{
+    margin-bottom: 10px;
+    text-align: center; 
     background-color: var(--clr-white);
-    padding: var(--card-padding);
+    padding: 10px;
     border-radius: var(--card-border-radius);
     box-shadow: var(--box-shadow);
     transition: all .3s ease;
@@ -863,12 +877,16 @@ button:hover {
     text-align: center;
     width: 100%;
     margin-left: -15px;
+    position: relative; 
 }
 
 #friend-input-container {
     margin-top: 10px;
 }
 
+#friend-username{
+    height: 30px;
+}
 /* Wrapper to handle overflow and make the table scrollable if necessary */
 .table-wrapper {
     overflow-x: auto;

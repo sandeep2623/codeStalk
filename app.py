@@ -2,9 +2,7 @@ from flask import Flask, jsonify,render_template, request
 import requests
 from bs4 import BeautifulSoup
 import re
-from selenium import webdriver
 import google.generativeai as genai
-from selenium.webdriver.chrome.options import Options
 
 
 
@@ -72,33 +70,6 @@ def scrape_website_data(username):
     profilename = soup_main.find('div', class_='profilePicSection_head_userHandle__oOfFy').get_text(strip=True)
     #cont
 
-    chrome_options = Options()
-    chrome_options.add_argument("--headless")  # Run in headless mode
-    chrome_options.add_argument("--disable-gpu")  # Disable GPU acceleration
-    chrome_options.add_argument("--no-sandbox")  # Required for some environments
-    chrome_options.add_argument("--disable-dev-shm-usage") 
-    driver = webdriver.Chrome(options=chrome_options)
-    driver.get("https://www.geeksforgeeks.org/events?itm_source=geeksforgeeks&itm_medium=main_header&itm_campaign=contests")
-    html = driver.page_source
-    soup_cont = BeautifulSoup(html, 'html.parser')
-    main_div = soup_cont.find('div', class_='ui stackable three column grid')
-    links=[]
-    text =[]
-    combined_text = []
-    if main_div:
-        sections = main_div.find_all('div', class_='five wide computer five wide large screen eight wide mobile seven wide tablet five wide widescreen column')
-        for section in sections:
-            anchors = section.find_all('a')
-            for anchor in anchors:
-                links.append(anchor.get('href'))
-            for p_tag in soup_cont.find_all('p', class_='sofia-pro eventsLanding_eventCardTitle__byiHw'):
-                key = p_tag.get_text(strip=True)
-                text.append(key)
-            ex = soup_cont.find_all('p', class_='sofia-pro')
-            p1_text = ex[1].get_text()
-            p2_text = soup_cont.find('p', class_='sofia-pro g-opacity-50').text.strip()
-            combined_text.append(p1_text + ' ' + p2_text)
-        combined_dict = {links[i]: {text[i]: combined_text[i]} for i in range(len(links))}
     #recent ques
     anchor_dict = {}
     ques_links = []
@@ -114,7 +85,7 @@ def scrape_website_data(username):
         "val": res,
         "profilename" : profilename,
         "pod" : "https://www.geeksforgeeks.org/problem-of-the-day?itm_source=geeksforgeeks&itm_medium=main_header&itm_campaign=practice_header",
-        "cont" : combined_dict,
+        "cont" : "https://www.geeksforgeeks.org/events?itm_source=geeksforgeeks&itm_medium=main_header&itm_campaign=contests",
         "recentques" : anchor_dict
     }
     

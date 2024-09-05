@@ -118,9 +118,6 @@ function attachEventListeners() {
         document.getElementById('friend-input-container').style.display = 'block';
     });
 
-    document.getElementById('add-friend-btn').addEventListener('click', function () {
-        document.getElementById('friend-input-container').style.display = 'block';
-    });
 
     document.getElementById('submit-friend-btn').addEventListener('click', function () {
         const username = document.getElementById('friend-username').value;

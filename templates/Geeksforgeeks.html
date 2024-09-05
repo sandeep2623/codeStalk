@@ -193,21 +193,9 @@
     <!-- end POD sec-->
     <!-- start new contests sec-->
     <div class="new-contests">
-        <h2> Contests</h2>
         <div class="all-messages">
-            {% for outer_key, inner_dict in scraped_data.cont.items() %}
-            <div>
-                {% for key, value in inner_dict.items() %}
-                <div class="messages">
-                    <a href="{{outer_key}}" target="_blank">
-                        <p><b>{{key}}</b> {{value}}</p>
-                    </a>
-                </div>
-                {% endfor %}
-            </div>
-            {% endfor %}
+           <h4><a href="{{scraped_data.cont}}" target="_blank">Join contests</a></h4>
         </div>
-
     </div>
     <div class="add-friends-section">
         <button id="add-friend-btn">Add Friend</button>
