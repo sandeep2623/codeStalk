@@ -145,4 +145,3 @@ def get_suggestions():
     )
     suggestions = response.text
     return jsonify({"suggestions": suggestions})
-
