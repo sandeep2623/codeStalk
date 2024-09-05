@@ -139,6 +139,4 @@ def get_suggestions():
     suggestions = response.text
     return jsonify({"suggestions": suggestions})
 
-if __name__ == '__main__':
-    app.run(debug=False,host='0.0.0.0')
 
