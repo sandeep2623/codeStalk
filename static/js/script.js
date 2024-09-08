@@ -1,3 +1,33 @@
+    const sidemenu = document.querySelector("aside");
+    const menubtn = document.querySelector("#menu_bar");
+    const closebtn = document.querySelector("#close_btn");
+    const navLinks = document.querySelectorAll(".sidebar .nav-link"); // Select all nav-links
+
+    menubtn.addEventListener('click', () => {
+        sidemenu.style.display = 'block';
+    });
+
+    closebtn.addEventListener('click', () => {
+        sidemenu.style.display = 'none';
+    });
+    const screenWidth = window.innerWidth;
+    if (screenWidth <= 768) {
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+           
+                sidemenu.style.display = 'none'; // Hide the sidebar after the animation ends
+             // Ensure this only runs once
+        });
+    });
+}
+
+    const themetoggler = document.querySelector(".theme-toggler");
+    themetoggler.addEventListener('click', () => {
+        document.body.classList.toggle('dark-theme-variables');
+        themetoggler.querySelector('span:nth-child(1)').classList.toggle('active');
+        themetoggler.querySelector('span:nth-child(2)').classList.toggle('active');
+    });
+
 //first page to mid page
 function redirectToDashboard() {
     // Redirect to the Flask route
@@ -9,6 +39,37 @@ function redirectToDashboard() {
 
 function showSection() {
     window.location.href = "/dashboard";
+}
+
+function attachEventListener(){
+    const sidemenu = document.querySelector("aside");
+    const menubtn = document.querySelector("#menu_bar");
+    const closebtn = document.querySelector("#close_btn");
+
+    menubtn.addEventListener('click', () => {
+        sidemenu.style.display = 'block';
+    });
+
+    closebtn.addEventListener('click', () => {
+        sidemenu.style.display = 'none';
+    });
+    if (screenWidth <= 768) {
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+               
+                    sidemenu.style.display = 'none'; // Hide the sidebar after the animation ends
+                 // Ensure this only runs once
+            });
+        });
+    }
+
+    const themetoggler = document.querySelector(".theme-toggler");
+    themetoggler.addEventListener('click', () => {
+        document.body.classList.toggle('dark-theme-variables');
+        themetoggler.querySelector('span:nth-child(1)').classList.toggle('active');
+        themetoggler.querySelector('span:nth-child(2)').classList.toggle('active');
+    });
+
 }
 
 
@@ -23,6 +84,15 @@ function selectSection(sectionId) {
 
     // Display username input form in the content area
     document.getElementById('content-area').innerHTML = `
+        <div class="top-s">
+                <button id="menu_bar">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+                <div class="theme-toggler">
+                    <span class="material-symbols-outlined active">light_mode</span>
+                    <span class="material-symbols-outlined">dark_mode</span>
+                </div>
+        </div>
         <div id="username-form">
             <h1>Welcome to <span>${sectionId}!</span></h1>
             <p>To get started, please enter your username below:</p>
@@ -30,7 +100,10 @@ function selectSection(sectionId) {
             <button onclick="submitUsername('${sectionId}')">Submit</button>
         </div>
     `;
+    attachEventListener();
+
 }
+
 
 function submitUsername(sectionId) {
     const username = document.getElementById('username-input').value;

@@ -66,12 +66,17 @@ body {
 
 .content{
     display: grid;
+    margin: 0 auto;
+    position: relative;
+    width: 100%;
+}
+.middle-main{
+    display: grid;
     width: 100%;
     gap: 1.8rem;
     grid-template-columns: auto 14rem;
     margin: 0 auto;
 }
-
 
 a {
     color: var(--clr-dark);
@@ -250,13 +255,13 @@ aside .top h2{
  start main section style
 ***********************/
 .welcome-container {
-    padding: 150px;
-    margin-left: 100px;
+    padding: 100px;
 }
 
 /* Heading Styles */
 .welcome-container h2 {
     font-size: 1.5rem;
+    color: var(--clr-dark);
 }
 
 .welcome-container h1 {
@@ -267,7 +272,7 @@ aside .top h2{
 
 /* Paragraph Styles */
 .welcome-container p {
-    color: #333; /* Darker text */
+    color: var(--clr-info-dark); /* Darker text */
     font-size: 1.25rem;
     line-height: 1.6;
     margin-bottom: 20px;
@@ -548,38 +553,8 @@ right sec styling
     align-items: stretch;  /* Ensure all divs have the same width */
     width: 100%;  /* Ensure the parent div takes full width of its container */
 }
-.right .pod-button {
-    margin-top: 1rem;
-    padding: 10px 110px;
-    font-size: 14px;
-    background-color: #007bff;
-    color: var(--clr-white);
-    border: var(--clr-dark);
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.right .pod-cont {
-    margin-top: 1rem;
-    padding: 10px 60px;
-    font-size: 14px;
-    background-color: var(--clr-white);
-    color: var(--clr-dark);
-    border: var(--clr-dark);
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
 
 
-.right .pod-button:hover {
-    background-color: #0056b3;
-}
-
-.right .pod-cont:hover {
-    background-color: #0056b3;
-}
 
 .right{
     margin-top: 1.4rem;
@@ -595,7 +570,32 @@ right sec styling
     gap: 2rem;
 }
 
+.content .top-f{
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: start;
+    gap: 2rem;
+    margin-top: 10px;
+}
+.content .top-s{
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: start;
+    gap: 2rem;
+    margin-top: 10px;
+}
 .right .top button{
+    display: none;
+}
+
+.content .top-f button{
+    display: none;
+}
+.content .top-s button{
     display: none;
 }
 
@@ -608,6 +608,16 @@ right sec styling
     cursor: pointer;
     border-radius: var(--border-radius-1);
 }
+.content .theme-toggler{
+    background-color: var(--clr-white);
+    display: flex;
+    justify-content: space-between;
+    height: 1.6rem;
+    width: 4.2rem;
+    cursor: pointer;
+    border-radius: var(--border-radius-1);
+}
+
 
 .right .theme-toggler span{
     font-size: 1.2rem;
@@ -617,8 +627,22 @@ right sec styling
     align-items: center;
     justify-content: center;
 }
+.content .theme-toggler span{
+    font-size: 1.2rem;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 
 .right .theme-toggler span.active{
+    background-color: var(--clr-primary);
+    color: #fff;
+}
+
+.content .theme-toggler span.active{
     background-color: var(--clr-primary);
     color: #fff;
 }
@@ -636,12 +660,14 @@ right sec styling
     color: var(--clr-dark);
 }
 /**pod**/
-.right .pod{
-    margin-top: 1rem;
-    margin-left: -20px;
-}
+
  
 .right .new-contests{
+    margin-top: 1rem;
+    margin-left: -10px;
+}
+
+.right .pod-section{
     margin-top: 1rem;
     margin-left: -10px;
 }
@@ -656,162 +682,21 @@ right sec styling
     transition: all .3s ease;
 }
 
+.right .pod-section .pod{
+    margin-bottom: 10px;
+    text-align: center; 
+    background-color: #007bff;
+    padding: 10px;
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--box-shadow);
+    transition: all .3s ease;
+}
+ 
 .right .new-contests .all-messages:hover{
     box-shadow: none;
 }
 
-.right .new-contests .messages{
-    margin-bottom: 1rem;
-}
 
-/***** 
-media query
-**********/
-
-
-/* Tablet View */
-@media screen and (max-width: 1400px) {
-    .container {
-        grid-template-columns: 7rem auto;
-        width: 94%;
-    }
-    aside .sidebar h3{
-        display: none;
-    }
-    .content main .main-top{
-        display: grid;
-        grid-template-columns: repeat(1, 1fr);
-        width: 200px;
-    }
-    .content main .main-top .top-left{
-        margin-bottom: 4%;
-    }
-    .content main .insights {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        width: auto;
-    }
-    .content main .recentquest .scroll-box{
-        width: auto;
-    }
-    .content main #scroll-box{
-        width: auto;
-    }
-
-
-    aside .sidebar a:last-child{
-        position: relative;
-        margin-top: 1.8rem;
-    }
-}
-
-/* mobile View */
-@media screen and (max-width: 768px){
-    .container{
-        width: 100%;
-        grid-template-columns: repeat(1,1fr);
-    }
-
-    aside{
-        position: fixed;
-        width: 18rem;
-        z-index: 3;
-        background: var(--clr-white);
-        display: none;
-        left: -100px;
-        animation: menuAni 1s forwards;
-    }
-    @keyframes menuAni{
-        to{
-            left: 0;
-        }
-    }
-
-    aside .sidebar h3{
-        display: inline;
-    }
-    aside .sidebar a{
-        width: 100%;
-        height: 3.4rem;
-    }
-
-    aside .logo h2{
-        display: inline;
-    }
-    aside .top div.close{
-        display: block;
-        position: absolute;
-        right: 0;
-        margin-right: 30px;
-        font-size: 35px;
-    }
-    .right .top{
-        position: fixed;
-        top: 0;
-        left: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 0 0.8rem;
-        background: var(--clr-white);
-        width: 100%;
-        height: 4.6rem; 
-        z-index: 2;
-        box-shadow: 0 1rem 1rem var(--box-shadow);
-        margin: 0;
-    }
-    .content main .insights{
-        display: grid;
-        grid-template-columns: repeat(1,1fr);
-        gap: 1.6rem;
-        padding: 40px;
-
-    }
-    .content main .main-top{
-        margin-top: 4rem;
-        margin-left: 6%;
-    }
-
-
-    .right .new-contests{
-        padding: 30px;
-        margin: 0 auto;
-    }
-    .right .profile{
-        position: absolute;
-        left: 70%;
-    }
-    
-    .right .new-contests{
-        padding: 30px;
-    }
-    
-    .right .pod{
-       padding: 30px;
-    }
-    .content main .recentquest{
-        padding: 30px;
-        margin: 0 auto;
-    }
-
-    .content main .show-scroll-box{
-        padding: 30px;
-        margin: 0 auto;
-    }
-    .right .top button{
-        display: inline-block;
-        background: transparent;
-        cursor: pointer;
-        color: var(--clr-dark);
-        position: absolute;
-        left: 1rem;
-    }
-    
-
-}
-
-/* Styling for the form container */
-/* Centering the Username Request Form */
 #username-form {
     text-align: center;
     padding: 30px;
@@ -820,6 +705,7 @@ media query
 #username-form h1 {
     font-size: 1.5rem;
     margin-bottom: 20px;
+    color: var(--clr-dark);
 }
 
 #username-form h1 span{
@@ -830,7 +716,7 @@ media query
 #username-form p {
     font-size: 1.25rem;
     margin-bottom: 20px;
-    color: #181a1e;
+    color: var(--clr-dark-variant);
 }
 
 #username-form {
@@ -839,7 +725,7 @@ media query
     gap: 15px;
     align-items: center; /* Center form elements horizontally */
     margin-top: 100px;
-    margin-left: 200px;
+
 }
 
 #username-input {
@@ -849,6 +735,7 @@ media query
     font-size: 1rem;
     border-radius: 5px; /* Rounded corners */
     outline: none;
+    color: var(--clr-primary);
 }
 
 #username-input:focus {
@@ -892,6 +779,7 @@ button:hover {
     overflow-x: auto;
     width: 100%;
     margin-top: 20px;
+    margin-left: 5px;
 }
 
 /* Table styling */
@@ -940,3 +828,221 @@ button:hover {
     width: 20%; /* Problems Solved column */
 }
 
+
+/***** 
+media query
+**********/
+
+
+/* Tablet View */
+@media screen and (max-width: 1400px) {
+    .container {
+        grid-template-columns: 7rem auto;
+        width: 94%;
+    }
+    aside .sidebar h3{
+        display: none;
+    }
+    .content main .main-top{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        width: 200px;
+    }
+    .content main .main-top .top-left{
+        margin-bottom: 4%;
+    }
+    .content main .insights {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        width: auto;
+    }
+    .content main .recentquest .scroll-box{
+        width: auto;
+    }
+    .content main #scroll-box{
+        width: auto;
+    }
+
+
+    aside .sidebar a:last-child{
+        position: relative;
+        margin-top: 1.8rem;
+    }
+}
+
+/* mobile View */
+@media screen and (max-width: 768px){
+    .container{
+        width: 100%;
+        grid-template-columns: repeat(1,1fr);
+    }
+    .content{
+        width: 100%;
+        align-items: stretch;
+    }
+    .content .middle-main{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .middle-main .right,.middle-main show-scroll-box{
+        margin-bottom: 10px;
+    }
+    .middle-main .right {
+        display: flex;
+        flex-direction: column; /* Stack the child divs vertically */
+        align-items: center;
+        padding: 0;
+    }
+    .middle-main .right .new-contests {
+        width: 90%; /* Adjust width in mobile view */
+        margin: 0 auto 20px auto; 
+    }
+   
+     .right .pod-section {
+        width: 90%; /* Adjust width in mobile view */
+        margin: 0 auto 20px auto; 
+    }
+
+
+    .container aside{
+        position: fixed;
+        width: 18rem;
+        z-index: 3;
+        background: var(--clr-white);
+        display: none;
+        left: -100px;
+        animation: menuAni 1s forwards;
+    }
+    @keyframes menuAni{
+        to{
+            left: 0;
+        }
+    }
+    
+
+    aside .sidebar h3{
+        display: inline;
+    }
+    aside .sidebar a{
+        width: 100%;
+        height: 3.4rem;
+    }
+
+    aside .logo h2{
+        display: inline;
+    }
+    aside .top div.close{
+        display: block;
+        position: absolute;
+        right: 0;
+        margin-right: 30px;
+        font-size: 35px;
+    }
+    .right .top{
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 0.8rem;
+        background: var(--clr-white);
+        width: 100%;
+        height: 4.6rem; 
+        z-index: 2;
+        box-shadow: 0 1rem 1rem var(--box-shadow);
+        margin: 0;
+    }
+    .content .top-f{
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 0.8rem;
+        background: var(--clr-white);
+        width: 100%;
+        height: 4.6rem; 
+        z-index: 2;
+        box-shadow: 0 1rem 1rem var(--box-shadow);
+        margin: 0;
+    }
+    .content .top-s{
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 0.8rem;
+        background: var(--clr-white);
+        width: 100%;
+        height: 4.6rem; 
+        z-index: 2;
+        box-shadow: 0 1rem 1rem var(--box-shadow);
+        margin: 0;
+    }
+    .content main .insights{
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+        gap: 1.6rem;
+        padding: 40px;
+
+    }
+    .content main .main-top{
+        margin-top: 4rem;
+        margin-left: 6%;
+    }
+
+
+
+    .right .profile{
+        position: absolute;
+        left: 70%;
+    }
+    
+
+    .content main .recentquest{
+        padding: 30px;
+        margin: 0 auto;
+    }
+
+    .content main .show-scroll-box{
+        padding: 20px;
+        margin: 0 auto;
+    }
+    .right .top button{
+        display: inline-block;
+        background: transparent;
+        cursor: pointer;
+        color: var(--clr-dark);
+        position: absolute;
+        left: 1rem;
+    }
+    .content .top-f button{
+        display: inline-block;
+        background: transparent;
+        cursor: pointer;
+        color: var(--clr-dark);
+        position: absolute;
+        left: 1rem;
+    }
+    .content .top-s button{
+        display: inline-block;
+        background: transparent;
+        cursor: pointer;
+        color: var(--clr-dark);
+        position: absolute;
+        left: 1rem;
+    }
+    .table-wrapper{
+        margin-left: 25%;
+    }
+
+}
+
+/* Styling for the form container */
+/* Centering the Username Request Form */
