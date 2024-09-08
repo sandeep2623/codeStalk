@@ -946,9 +946,7 @@ media query
         margin-right: 30px;
         font-size: 35px;
     }
-    .right .top .profile{
-        left: 60%;
-    }
+    
     .right .top{
         position: fixed;
         top: 0;
