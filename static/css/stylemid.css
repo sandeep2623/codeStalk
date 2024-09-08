@@ -579,7 +579,6 @@ right sec styling
     gap: 2rem;
     margin-top: 10px;
 }
-
 .content .top-s{
     position: absolute;
     top: 0;
@@ -946,7 +945,6 @@ media query
         margin-right: 30px;
         font-size: 35px;
     }
-    
     .right .top{
         position: fixed;
         top: 0;
