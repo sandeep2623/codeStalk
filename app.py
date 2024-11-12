@@ -105,15 +105,12 @@ def get_content():
 @app.route('/get-suggestions', methods=['POST'])
 def get_suggestions():
     global scraped_data
-    API_KEY = 'AIzaSyDmPwXlv1x8P0_yjhJWoqveUf-yN7ueGMg'
+    API_KEY = 'AIzaSyAOn8eW9YZrvYoYlkG_T7yhkVIMXAQa9ds'
     genai.configure(api_key=API_KEY)
     model = genai.GenerativeModel('gemini-1.5-flash')
     response = model.generate_content(
-        f"The dictionary {scraped_data['val']} contains total questions solved of School(S), Basic(B), Easy(E), Medium(M), Hard(H) levels and a monthly coding score(MCS) meaning no.of submissions in the last month."
-        f"This is the list of questions solved by the user: '{scraped_data['recentques']}'."
-        "By going through each question, identify which topics of data structure and algorithms they belong to, and find what topic they have a grip on, which topics they need to practice, and what new topics they should move on to next."
-        "Provide suggestions for improving their skills.provide text in the format grip on , need practice on , new topics to explore and suggest some resources for the new topics to explore and suggestions for improvement"
-    )
+        f"The dictionary {scraped_data['val']} contains total questions solved of School(S), Basic(B), Easy(E), Medium(M), Hard(H) levels and a monthly coding score(MCS) meaning no.of submissions in the last month.This is the list of questions solved by the user: '{scraped_data['recentques']}'.By going through each question, identify which topics of data structure and algorithms they belong to, and find what topic they have a grip on, which topics they need to practice, and what new topics they should move on to next.Provide suggestions for improving their skills.provide text in the format grip on , need practice on , new topics to explore and suggest some resources for the new topics to explore and suggestions for improvement"
+)
     suggestions = response.text
     return jsonify({"suggestions": suggestions})
 
